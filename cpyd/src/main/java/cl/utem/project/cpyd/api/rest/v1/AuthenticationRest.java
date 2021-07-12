@@ -1,5 +1,8 @@
 package cl.utem.project.cpyd.api.rest.v1;
 
+import cl.utem.project.cpyd.api.utils.IPUtils;
+import cl.utem.project.cpyd.api.utils.JwtUtils;
+import cl.utem.project.cpyd.api.vo.AuthVo;
 import cl.utem.project.cpyd.api.vo.ErrorVo;
 import cl.utem.project.cpyd.api.vo.LoginVo;
 import cl.utem.project.cpyd.db.model.Credential;
@@ -9,7 +12,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.io.Serializable;
+import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.validator.routines.InetAddressValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +25,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = {"/v1/authentication"}, consumes = {"application/json; charset=utf-8"}, produces = {"application/json; charset=utf-8"})
+@RequestMapping(value = {"/v1/authentications"}, consumes = {"application/json; charset=utf-8"}, produces = {"application/json; charset=utf-8"})
 public class AuthenticationRest implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Autowired
     private transient CredentialManager credentialManager;
+    
+    @Autowired
+    private transient HttpServletRequest httpRequest;
+            
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationRest.class);
     
     @ApiOperation(value = "Permite obtener un JWT válido para consumir la operación")
@@ -61,22 +70,32 @@ public class AuthenticationRest implements Serializable{
             throw new Exceptions("El atributo password es requerido");
         }
         
-        boolean ok = credentialManager.authenticate(app, password);
-        if(!ok){
-            LOGGER.error("Credencial invalida");
-            throw new Exceptions(401,"Credencial inválida, Usuario o contraseña incorrectos ");
-        }
-        /*Credential credential = credentialManager.authenticate(app, password);
-        if(credential == false || !credential.getActive()){
-            LOGGER.error("Usuario / Contraseña incorrectos");
-            throw new Exceptions(401,"Usuario o contraseña incorrectos");
+        final Credential credential = credentialManager.getCredentialByApp(app);
+        if(credential == null){
+            LOGGER.error("Credencial no existe");
+            throw new Exceptions(401, "Credencial inválida");
         }
         if(!credential.getActive()){
-            LOGGER.error("Credencial NO Activa");
-            throw new Exceptions(403,"Usuario sin permiso");
+            LOGGER.error("Credencial NO activa");
+            throw new Exceptions(403, "NO tiene permisos");
         }
         
-        */
-        return null;
+        boolean equals = StringUtils.equals(credential.getPassword(), password);
+        if(!equals){
+            LOGGER.error("contraseña incorrecta");
+            throw new Exceptions(401, "contraseña inválida");
+        }
+        final String ip = IPUtils.getClientIpAddress(httpRequest);
+        if(!InetAddressValidator.getInstance().isValid(ip)){
+            LOGGER.error("IP NO válida");
+            throw new Exceptions(403, "NO tiene permisos");
+        }
+        
+        final String jwt = JwtUtils.createJwt("/v1/authentications/login", ip, credential);
+        if(StringUtils.isBlank(jwt)){
+            LOGGER.error("No se puede generar el jwt");
+            throw new Exceptions("NO es posible completar la petición");
+        }
+        return ResponseEntity.ok(new AuthVo(jwt));
     }
 }

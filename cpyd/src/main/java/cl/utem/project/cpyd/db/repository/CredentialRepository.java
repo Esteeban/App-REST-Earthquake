@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface CredentialRepository extends JpaRepository<Credential, Long>{
     
     public Credential findByToken(String token);
+    public Credential findByAppIgnoreCase(String app);
     public Credential findByAppIgnoreCaseAndPassword(String app, String password);
 }
