@@ -16,23 +16,48 @@
 	<description>App REST Earthquake</description>
 	<properties>
 		<java.version>11</java.version>
+                <springfox.version>3.0.0</springfox.version>
+                <commons.lang3.version>3.12.0</commons.lang3.version>
+                <jwt.version>3.16.0</jwt.version>
+                <commons.validator.version>1.7</commons.validator.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+                        
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
+                <dependency>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-boot-starter</artifactId>
+                    <version>${springfox.version}</version>
+                </dependency>
+       		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
+                <dependency>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-lang3</artifactId>
+                        <version>${commons.lang3.version}</version>
+                </dependency>
+                <dependency>
+                        <groupId>commons-validator</groupId>
+                        <artifactId>commons-validator</artifactId>
+                        <version>${commons.validator.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.auth0</groupId>
+                    <artifactId>java-jwt</artifactId>
+                    <version>${jwt.version}</version>
+                </dependency>
+             
+                <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
@@ -51,12 +76,12 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+            <plugins>
+		<plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
+            </plugins>
 	</build>
 
 </project>
