@@ -14,7 +14,6 @@ public class ScrapingWeb{
 	 * @param url de la página
 	 * @return codigo html
 	 */
-	
        ArrayList<sismo> sismos = new ArrayList<>();
     
         public class sismo 
@@ -105,10 +104,12 @@ public class ScrapingWeb{
 
 
         }
-    
-    
-    
-    
+   
+        /**
+         * 
+         * @param url de la página
+         * @return conection html
+         */
         public static Document getHTML(String url) {
 		Document html = null;
 		try {
@@ -169,7 +170,10 @@ public class ScrapingWeb{
 	
     }
 	
-	
+	/**
+         * 
+         * @param args 
+         */
 	public static void main(String[] args) {
 		new ScrapingWeb().scraping();
 		

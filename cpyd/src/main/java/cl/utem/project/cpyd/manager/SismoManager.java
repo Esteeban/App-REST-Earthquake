@@ -1,14 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cl.utem.project.cpyd.manager;
 
-/**
- *
- * @author esteeban
- */
-public class SismoManager {
+import cl.utem.project.cpyd.db.model.Sismo;
+import cl.utem.project.cpyd.db.repository.SismoRepository;
+import java.io.Serializable;
+import java.util.List;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SismoManager implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Autowired
+    private transient SismoRepository sismoRepository;
     
+    /**
+     * 
+     * @param id del sismo
+     * @return 
+     */
+    public Sismo getSismo(final long id) {
+        Sismo sismo = null;
+        if(id != 0){
+            sismo = sismoRepository.findById(id);
+        }
+        return sismo;
+    }
+    
+    /**
+     * 
+     * @return listado de sismos
+     */
+    public List<Sismo> getSismos(){
+        return sismoRepository.findAll();
+    }
 }

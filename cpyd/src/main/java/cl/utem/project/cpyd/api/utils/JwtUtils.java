@@ -14,12 +14,6 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Basado en el string procesaremos varios elementos que se obtienen desde el
- * jwt
- *
- * @author ExperTI (contacto@experti.cl)
- */
 public class JwtUtils implements Serializable {
 
     private static final long serialVersionUID = 8572177540772003840L;
