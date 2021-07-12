@@ -1,7 +1,6 @@
 package pck.scraping;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -120,24 +119,7 @@ public class ScrapingWeb{
 		return html;
 	}
 	public void scraping() {
-		/*
-                Elements articulos = ScrapingWeb.getHTML("http://www.sismologia.cl/links/ultimos_sismos.html").select("a");
-		
-                for (Element sismo : articulos) {
-			try {
-				String urlSismo = sismo.select("a").attr("abs:href");
-				Document htmlSismo = ScrapingWeb.getHTML(urlSismo);
-				
-				String Hora = htmlSismo.select("tr").text();
-				System.out.println("Sismo:"+Hora);
-				System.out.println("-------------");
-			}catch(Exception e){
-				System.out.println("error");
-			}
-		}
-                /*
-            
-            */
+
                 Document htmlSismo = ScrapingWeb.getHTML("http://www.sismologia.cl/links/ultimos_sismos.html");
                 
                 Element tabla = htmlSismo.select("table").get(0); //Obteniendo primera tabla que es la de sismos

@@ -1,4 +1,4 @@
-package cl.utem.project.cpyd.api.vo;
+package cl.utem.project.cpyd.api.rest.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
@@ -9,7 +9,8 @@ import java.io.Serializable;
 @ApiModel(value = "auth")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AuthVo implements Serializable{
-    private static final long serialVersionUID = 123124124;
+    
+    private static final long serialVersionUID = 123124124L;
     
     private String bearer = null;
 

@@ -4,7 +4,6 @@ import cl.utem.project.cpyd.db.model.Sismo;
 import cl.utem.project.cpyd.db.repository.SismoRepository;
 import java.io.Serializable;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,7 @@ public class SismoManager implements Serializable {
     /**
      * 
      * @param id del sismo
-     * @return 
+     * @return objeto sismo
      */
     public Sismo getSismo(final long id) {
         Sismo sismo = null;

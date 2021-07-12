@@ -2,9 +2,9 @@ package cl.utem.project.cpyd.api.rest.v1;
 
 import cl.utem.project.cpyd.api.utils.IPUtils;
 import cl.utem.project.cpyd.api.utils.JwtUtils;
-import cl.utem.project.cpyd.api.vo.AuthVo;
-import cl.utem.project.cpyd.api.vo.ErrorVo;
-import cl.utem.project.cpyd.api.vo.LoginVo;
+import cl.utem.project.cpyd.api.rest.vo.AuthVo;
+import cl.utem.project.cpyd.api.rest.vo.ErrorVo;
+import cl.utem.project.cpyd.api.rest.vo.LoginVo;
 import cl.utem.project.cpyd.db.model.Credential;
 import cl.utem.project.cpyd.exception.Exceptions;
 import cl.utem.project.cpyd.manager.CredentialManager;
@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = {"/v1/authentications"}, consumes = {"application/json; charset=utf-8"}, produces = {"application/json; charset=utf-8"})
 public class AuthenticationRest implements Serializable{
+    
     private static final long serialVersionUID = 1L;
     
     @Autowired
@@ -39,6 +40,7 @@ public class AuthenticationRest implements Serializable{
     
     @ApiOperation(value = "Permite obtener un JWT válido para consumir la operación")
     @ApiResponses(value = {
+        @ApiResponse(code = 200, message = "Respuesta exitosa", response = ErrorVo.class),
         @ApiResponse(code = 400, message = "Peticion invalida", response = ErrorVo.class),
         @ApiResponse(code = 401, message = "Usuario o contraseña incorrecta", response = ErrorVo.class),
         @ApiResponse(code = 403, message = "Usuario sin permisos", response = ErrorVo.class),

@@ -1,6 +1,6 @@
 package cl.utem.project.cpyd.api.rest;
 
-import cl.utem.project.cpyd.api.vo.ErrorVo;
+import cl.utem.project.cpyd.api.rest.vo.ErrorVo;
 import cl.utem.project.cpyd.exception.Exceptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

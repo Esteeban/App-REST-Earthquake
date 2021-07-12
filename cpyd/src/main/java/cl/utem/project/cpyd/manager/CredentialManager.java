@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CredentialManager implements Serializable{
+    
     private static final long serialVersionUID = 1L;
     
     @Autowired
