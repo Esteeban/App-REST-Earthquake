@@ -20,8 +20,11 @@ public class Sismo implements Serializable {
     @Column(name= "pk",nullable = false)
     private Long id = null;
     
-    @Column(name= "fechaHora",nullable = false)
-    private String fechaHora = null;
+    @Column(name= "fechaLocal",nullable = false)
+    private String fechaLocal = null;
+    
+    @Column(name= "fechaUTCl",nullable = false)
+    private String fechaUTC = null;
     
     @Column(name= "latitud",nullable = false, unique = true)
     private double latitud = 0.0;
@@ -30,10 +33,10 @@ public class Sismo implements Serializable {
     private double longitud = 0.0;
     
     @Column(name= "profundidad",nullable = false, unique = true)
-    private int profundidad = 0;
+    private double profundidad = 0;
     
     @Column(name= "magnitud",nullable = false, unique = true)
-    private double magnitud = 0.0;
+    private String magnitud = null;
     
     @Column(name= "agencia",nullable = false, unique = true)
     private String agencia = null;
@@ -44,70 +47,77 @@ public class Sismo implements Serializable {
     public static long getSeialVersionUID() {
         return seialVersionUID;
     }
-
+    
     public Long getId() {
         return id;
-    }
-
-    public String getFechaHora() {
-        return fechaHora;
-    }
-
-    public double getLatitud() {
-        return latitud;
-    }
-
-    public double getLongitud() {
-        return longitud;
-    }
-
-    public int getProfundidad() {
-        return profundidad;
-    }
-
-    public double getMagnitud() {
-        return magnitud;
-    }
-
-    public String getAgencia() {
-        return agencia;
-    }
-
-    public String getReferencia() {
-        return referencia;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setFechaHora(String fechaHora) {
-        this.fechaHora = fechaHora;
+    public String getFechaLocal() {
+        return fechaLocal;
+    }
+
+    public void setFechaLocal(String fechaLocal) {
+        this.fechaLocal = fechaLocal;
+    }
+
+    public String getFechaUTC() {
+        return fechaUTC;
+    }
+
+    public void setFechaUTC(String fechaUTC) {
+        this.fechaUTC = fechaUTC;
+    }
+
+    public double getLatitud() {
+        return latitud;
     }
 
     public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
+    public double getLongitud() {
+        return longitud;
+    }
+
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
 
-    public void setProfundidad(int profundidad) {
+    public double getProfundidad() {
+        return profundidad;
+    }
+
+    public void setProfundidad(double profundidad) {
         this.profundidad = profundidad;
     }
 
-    public void setMagnitud(double magnitud) {
+    public String getMagnitud() {
+        return magnitud;
+    }
+
+    public void setMagnitud(String magnitud) {
         this.magnitud = magnitud;
+    }
+
+    public String getAgencia() {
+        return agencia;
     }
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
     }
 
+    public String getReferencia() {
+        return referencia;
+    }
+
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
-    
     
 }

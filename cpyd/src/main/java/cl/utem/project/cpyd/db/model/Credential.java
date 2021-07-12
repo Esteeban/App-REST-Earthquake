@@ -10,11 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 
-/**
- *
- * @author esteeban
- */
-
 @Entity
 @Table(name="credentials")
 public class Credential implements Serializable {
@@ -35,7 +30,7 @@ public class Credential implements Serializable {
     private String password = null;
     
     @Column(name= "active",nullable = false)
-    private Boolean active = null;
+    private Boolean active = false;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
