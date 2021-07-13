@@ -1,11 +1,11 @@
 package cl.utem.project.cpyd.exception;
 
 public class Exceptions extends RuntimeException{
+    
     private final Integer httpCode;
-    //private static final Logger LOG = Logger.getLogger(Exceptions.class.getName());
 
     public Exceptions() {
-        super("Precondicion Fallida");
+        super("Precondición Fallida");
         this.httpCode = 412;
     }
 
@@ -26,7 +26,7 @@ public class Exceptions extends RuntimeException{
 
     public Exceptions(Throwable cause) {
         super(cause);
-        this.httpCode = 500;
+        this.httpCode = 412;
     }   
 
     public Integer getHttpCode() {
