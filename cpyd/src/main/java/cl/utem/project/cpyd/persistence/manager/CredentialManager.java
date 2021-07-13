@@ -1,7 +1,7 @@
-package cl.utem.project.cpyd.manager;
+package cl.utem.project.cpyd.persistence.manager;
 
-import cl.utem.project.cpyd.db.model.Credential;
-import cl.utem.project.cpyd.db.repository.CredentialRepository;
+import cl.utem.project.cpyd.persistence.model.Credential;
+import cl.utem.project.cpyd.persistence.repository.CredentialRepository;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package cl.utem.project.cpyd.api.utils;
 
 
-import cl.utem.project.cpyd.db.model.Credential;
+import cl.utem.project.cpyd.persistence.model.Credential;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;

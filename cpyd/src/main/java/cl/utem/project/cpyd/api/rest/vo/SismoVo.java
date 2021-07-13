@@ -1,6 +1,6 @@
 package cl.utem.project.cpyd.api.rest.vo;
 
-import cl.utem.project.cpyd.db.model.Sismo;
+import cl.utem.project.cpyd.persistence.model.Sismo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

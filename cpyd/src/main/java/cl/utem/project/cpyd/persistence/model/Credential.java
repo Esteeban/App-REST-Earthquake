@@ -1,4 +1,4 @@
-package cl.utem.project.cpyd.db.model;
+package cl.utem.project.cpyd.persistence.model;
 
 
 import java.io.Serializable;

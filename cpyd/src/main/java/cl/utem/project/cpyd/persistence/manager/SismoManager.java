@@ -1,7 +1,7 @@
-package cl.utem.project.cpyd.manager;
+package cl.utem.project.cpyd.persistence.manager;
 
-import cl.utem.project.cpyd.db.model.Sismo;
-import cl.utem.project.cpyd.db.repository.SismoRepository;
+import cl.utem.project.cpyd.persistence.model.Sismo;
+import cl.utem.project.cpyd.persistence.repository.SismoRepository;
 import java.io.Serializable;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

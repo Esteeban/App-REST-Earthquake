@@ -1,4 +1,4 @@
-package pck.scraping;
+package cl.utem.project.cpyd.api.Scraping;
 
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
@@ -147,15 +147,13 @@ public class ScrapingWeb{
                 //PRUEBA
                 for(sismo s : sismos)
                 {
-                    System.out.println(s.getFechaLocal()+";"+s.getFechaUTC()+";" + s.getLatitud()+";" +s.getLongitud()+";"+s.getProfundidad()+";"+s.getMagnitud()+";"+s.getAgencia()+";"+s.getReferencia());
+                    System.out.println(s.getFechaLocal()+";"+s.getFechaUTC()+";" 
+                            + s.getLatitud()+";" +s.getLongitud()+";"+s.getProfundidad()
+                            +";"+s.getMagnitud()+";"+s.getAgencia()+";"+s.getReferencia());
                 }
 	
     }
-	
-	/**
-         * 
-         * @param args 
-         */
+
 	public static void main(String[] args) {
 		new ScrapingWeb().scraping();
 		

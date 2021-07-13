@@ -1,5 +1,4 @@
-
-package cl.utem.project.cpyd.db.model;
+package cl.utem.project.cpyd.persistence.model;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,7 +13,7 @@ import javax.persistence.GenerationType;
 @Table(name="sismo")
 public class Sismo implements Serializable {
     
-    private static final long seialVersionUID=1L;
+    private static final long seialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

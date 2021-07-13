@@ -4,9 +4,9 @@ import cl.utem.project.cpyd.api.utils.IPUtils;
 import cl.utem.project.cpyd.api.utils.JwtUtils;
 import cl.utem.project.cpyd.api.rest.vo.ErrorVo;
 import cl.utem.project.cpyd.api.rest.vo.SismoVo;
-import cl.utem.project.cpyd.db.model.Sismo;
+import cl.utem.project.cpyd.persistence.model.Sismo;
 import cl.utem.project.cpyd.exception.Exceptions;
-import cl.utem.project.cpyd.manager.SismoManager;
+import cl.utem.project.cpyd.persistence.manager.SismoManager;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -41,7 +41,7 @@ public class SismoRest implements Serializable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SismoRest.class);
 
-    @ApiOperation(value = "Permite obtener el listado de productos")
+    @ApiOperation(value = "Permite obtener el listado de sismos")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Respuesta fue exitosa", response = SismoVo.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Acceso no autorizado", response = ErrorVo.class),

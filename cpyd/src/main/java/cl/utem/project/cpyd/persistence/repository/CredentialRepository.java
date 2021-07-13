@@ -1,6 +1,6 @@
-package cl.utem.project.cpyd.db.repository;
+package cl.utem.project.cpyd.persistence.repository;
 
-import cl.utem.project.cpyd.db.model.Credential;
+import cl.utem.project.cpyd.persistence.model.Credential;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
