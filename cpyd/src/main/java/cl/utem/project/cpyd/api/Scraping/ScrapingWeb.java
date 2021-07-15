@@ -1,5 +1,6 @@
 package cl.utem.project.cpyd.api.Scraping;
 
+import cl.utem.project.cpyd.api.rest.vo.SismoVo;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,101 +9,7 @@ import org.jsoup.select.Elements;
 
 public class ScrapingWeb{
 	
-	/**
-	 * Método que obtiene el codigo HTML de la página web
-	 * @param url de la página
-	 * @return codigo html
-	 */
-       ArrayList<sismo> sismos = new ArrayList<>();
-    
-        public class sismo 
-        {
-            private String fechaLocal;
-            private String fechaUTC;
-            private float latitud;
-            private float longitud;
-            private float profundidad;
-            private String magnitud;
-            private String agencia;
-            private String referencia;
-
-            private sismo(String fechaLocal, String fechaUTC, float latitud, float longitud, float profundidad, String magnitud, String agencia, String referencia) {
-                this.fechaLocal=fechaLocal;
-                this.fechaUTC=fechaUTC;
-                this.latitud=latitud;
-                this.longitud=longitud;
-                this.profundidad=profundidad;
-                this.magnitud=magnitud;
-                this.agencia=agencia;
-                this.referencia=referencia;
-            }
-
-            public String getFechaLocal(){
-                return fechaLocal;
-            }
-
-            public void setFechaLocal(String fechaLocal) {
-                this.fechaLocal = fechaLocal;
-            }
-
-            public String getFechaUTC() {
-                return fechaUTC;
-            }
-
-            public void setFechaUTC(String fechaUTC) {
-                this.fechaUTC = fechaUTC;
-            }
-
-            public float getLatitud() {
-                return latitud;
-            }
-
-            public void setLatitud(float latitud) {
-                this.latitud = latitud;
-            }
-
-            public float getLongitud() {
-                return longitud;
-
-            }
-            public void setLongitud(float longitud) {
-                this.longitud = longitud;
-            }
-
-            public float getProfundidad() {
-                return profundidad;
-            }
-
-            public void setProfundidad(float profundidad) {
-                this.profundidad = profundidad;
-            }
-
-            public String getMagnitud() {
-                return magnitud;
-            }
-
-            public void setMagnitud(String magnitud) {
-                this.magnitud = magnitud;
-            }
-
-            public String getAgencia() {
-                return agencia;
-            }
-
-            public void setAgencia(String agencia) {
-                this.agencia = agencia;
-            }
-
-            public String getReferencia() {
-                return referencia;
-            }
-
-            public void setReferencia(String referencia) {
-                this.referencia = referencia;
-            }
-
-
-        }
+       ArrayList<SismoVo> sismos = new ArrayList<>();
    
         /**
          * 
@@ -118,6 +25,7 @@ public class ScrapingWeb{
 		}
 		return html;
 	}
+
 	public void scraping() {
 
                 Document htmlSismo = ScrapingWeb.getHTML("http://www.sismologia.cl/links/ultimos_sismos.html");
@@ -130,7 +38,8 @@ public class ScrapingWeb{
                     Element fila = filas.get(i);
                     Elements columnas = fila.select("td");
                     
-                    sismo sm = new sismo(
+                    //SismoVo se crea con los datos extraídos de la pagina web, agregandose al ArrayList sismos
+                    SismoVo sm = new SismoVo(
                             columnas.get(0).text(),
                             columnas.get(1).text(),
                             Float.parseFloat(columnas.get(2).text()),
@@ -144,18 +53,12 @@ public class ScrapingWeb{
                    sismos.add(sm);
                 }
                 
-                //PRUEBA
-                for(sismo s : sismos)
-                {
-                    System.out.println(s.getFechaLocal()+";"+s.getFechaUTC()+";" 
-                            + s.getLatitud()+";" +s.getLongitud()+";"+s.getProfundidad()
-                            +";"+s.getMagnitud()+";"+s.getAgencia()+";"+s.getReferencia());
-                }
+           //PRUEBA
+           sismos.forEach(s -> {
+               System.out.println(s.getFechaLocal()+";"+s.getFechaUTC()+";"
+                       + s.getLatitud()+";" +s.getLongitud()+";"+s.getProfundidad()
+                       +";"+s.getMagnitud()+";"+s.getAgencia()+";"+s.getReferencia());
+           });
 	
     }
-
-	public static void main(String[] args) {
-		new ScrapingWeb().scraping();
-		
-	}
 }

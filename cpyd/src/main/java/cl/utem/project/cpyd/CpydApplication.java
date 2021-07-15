@@ -18,7 +18,8 @@ public class CpydApplication {
     }
     
     public static void main(String[] args) {
-    	SpringApplication.run(CpydApplication.class, args);
+    	SpringApplication.run(CpydApplication.class, args);	
+	
     }
 
 }

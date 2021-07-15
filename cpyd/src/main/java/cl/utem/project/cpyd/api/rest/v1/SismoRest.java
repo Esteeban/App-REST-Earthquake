@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/v1/sismos", consumes = {"application/json;charset=utf-8"}, produces = {"application/json;charset=utf-8"})
+@RequestMapping(value = "/v1/sismos")
 public class SismoRest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,19 +71,17 @@ public class SismoRest implements Serializable {
             throw new Exceptions(401, "Credenciales inválidas");
         }
 
-        
         List<Sismo> sismos = sismoManager.getSismos();
         if (CollectionUtils.isEmpty(sismos)) {
-            LOGGER.error("Lista de productos vacía");
-            throw new Exceptions(404, "No se han encontrado productos");
+            LOGGER.error("Lista de sismos vacía");
+            throw new Exceptions(404, "No se han encontrado sismos");
         }
 
         List<SismoVo> resultList = new ArrayList<>();
-        sismos.forEach(sismo -> {
+        sismos.forEach(sismo->{
             resultList.add(new SismoVo(sismo));
         });
         sismos.clear();
-
         return ResponseEntity.ok(resultList);
     }
 

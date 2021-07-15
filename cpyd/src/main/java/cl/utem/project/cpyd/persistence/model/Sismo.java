@@ -2,12 +2,7 @@ package cl.utem.project.cpyd.persistence.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
 @Table(name="sismo")
@@ -20,10 +15,10 @@ public class Sismo implements Serializable {
     @Column(name= "pk",nullable = false)
     private Long id = null;
     
-    @Column(name= "fechaLocal",nullable = false)
+    @Column(name= "fechalocal",nullable = false)
     private String fechaLocal = null;
     
-    @Column(name= "fechaUTCl",nullable = false)
+    @Column(name= "fechautc",nullable = false)
     private String fechaUTC = null;
     
     @Column(name= "latitud",nullable = false, unique = true)
@@ -41,7 +36,7 @@ public class Sismo implements Serializable {
     @Column(name= "agencia",nullable = false, unique = true)
     private String agencia = null;
     
-    @Column(name= "refencia",nullable = false, unique = true)
+    @Column(name= "referencia",nullable = false, unique = true)
     private String referencia = null;
 
     public static long getSeialVersionUID() {

@@ -35,6 +35,18 @@ public class SismoVo{
         
     }
 
+    public SismoVo(String fechaLocal, String fechaUTC, float latitud, float longitud, float profundidad, String magnitud, String agencia, String referencia) {
+                this.fechaLocal=fechaLocal;
+                this.fechaUTC=fechaUTC;
+                this.latitud=latitud;
+                this.longitud=longitud;
+                this.profundidad=profundidad;
+                this.magnitud=magnitud;
+                this.agencia=agencia;
+                this.referencia=referencia;
+           
+    }
+
     @ApiModelProperty(value = "id del sismo",
             required = true,
             example = "1")
