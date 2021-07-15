@@ -1,5 +1,6 @@
-package cl.utem.project.cpyd.api.vo;
+package cl.utem.project.cpyd.api.rest.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 
 public class ErrorVo {
@@ -16,6 +17,8 @@ public class ErrorVo {
         this.date = LocalDateTime.now();
     }
 
+    @ApiModelProperty(value = "Mensaje del error",
+            required = true)
     public String getMessage() {
         return message;
     }
@@ -24,6 +27,8 @@ public class ErrorVo {
         this.message = message;
     }
 
+    @ApiModelProperty(value = "fecha del error",
+            required = true)
     public LocalDateTime getDate() {
         return date;
     }

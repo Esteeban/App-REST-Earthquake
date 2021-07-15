@@ -20,8 +20,8 @@ CREATE UNIQUE INDEX ON credentials(UPPER(TRIM(both FROM app)));
 DROP TABLE IF EXISTS sismo CASCADE;
 CREATE TABLE sismo (
     pk bigserial NOT NULL,
-    fechaLocal varchar(255) NOT NULL,
-    fechaUTC VARCHAR(255) NOT NULL,
+    fechalocal varchar(255) NOT NULL,
+    fechautc VARCHAR(255) NOT NULL,
     latitud float NOT NULL,
     longitud float NOT NULL,
     profundidad float NOT NULL,
@@ -30,6 +30,6 @@ CREATE TABLE sismo (
     referencia varchar(255) NOT null,
     PRIMARY KEY(pk)
 );
-CREATE INDEX ON sismo(fechaLocal);
+CREATE INDEX ON sismo(magnitud);
 
 COMMIT;

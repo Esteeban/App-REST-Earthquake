@@ -1,4 +1,4 @@
-package cl.utem.project.cpyd.api.vo;
+package cl.utem.project.cpyd.api.rest.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
