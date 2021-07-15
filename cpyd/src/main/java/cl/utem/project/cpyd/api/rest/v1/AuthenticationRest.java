@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = {"/v1/authentications"}, consumes = {"application/json; charset=utf-8"}, produces = {"application/json; charset=utf-8"})
+@RequestMapping(value = {"/v1/authentications"})
 public class AuthenticationRest implements Serializable{
     
     private static final long serialVersionUID = 1L;

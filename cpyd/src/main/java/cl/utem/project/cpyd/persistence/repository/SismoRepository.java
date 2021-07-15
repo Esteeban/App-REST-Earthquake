@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SismoRepository extends JpaRepository<Sismo, Long>{
     Sismo findById(long id);
+
 }
 
