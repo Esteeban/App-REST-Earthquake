@@ -7,6 +7,7 @@ import cl.utem.project.cpyd.api.vo.SismoVo;
 import cl.utem.project.cpyd.db.model.Sismo;
 import cl.utem.project.cpyd.exception.Exceptions;
 import cl.utem.project.cpyd.manager.SismoManager;
+import cl.utem.project.cpyd.scraping.ScrapingWeb;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -26,13 +27,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pck.scraping.ScrapingWeb.sismo;
 
 @RestController
 @RequestMapping(value = "/v1/sismos", consumes = {"application/json;charset=utf-8"}, produces = {"application/json;charset=utf-8"})
 public class SismoRest implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    @Autowired
+    private transient ScrapingWeb scrapingWeb;
+    
+    
 
     @Autowired
     private transient SismoManager sismoManager;
@@ -72,20 +77,15 @@ public class SismoRest implements Serializable {
             throw new Exceptions(401, "Credenciales inválidas");
         }
 
-        
+        scrapingWeb.scraping();
         List<Sismo> sismos = sismoManager.getSismos();
         if (CollectionUtils.isEmpty(sismos)) {
             LOGGER.error("Lista de productos vacía");
             throw new Exceptions(404, "No se han encontrado productos");
         }
-
-        List<SismoVo> resultList = new ArrayList<>();
-        for (Sismo sismo : sismos) {
-            resultList.add(new SismoVo(sismo));
-        }
-        sismos.clear();
-
-        return ResponseEntity.ok(resultList);
+       
+        
+        return ResponseEntity.ok(sismos);
     }
 
 }

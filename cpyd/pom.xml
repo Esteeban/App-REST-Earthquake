@@ -15,7 +15,7 @@
 	<name>cpyd</name>
 	<description>App REST Earthquake</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
                 <springfox.version>3.0.0</springfox.version>
                 <commons.lang3.version>3.12.0</commons.lang3.version>
                 <jwt.version>3.16.0</jwt.version>

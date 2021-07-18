@@ -13,6 +13,9 @@ import javax.persistence.GenerationType;
 @Table(name="sismo")
 public class Sismo implements Serializable {
     
+    
+    
+    
     private static final long seialVersionUID=1L;
     
     @Id
@@ -20,20 +23,20 @@ public class Sismo implements Serializable {
     @Column(name= "pk",nullable = false)
     private Long id = null;
     
-    @Column(name= "fechaLocal",nullable = false)
+    @Column(name= "fechalocal",nullable = false)
     private String fechaLocal = null;
     
-    @Column(name= "fechaUTCl",nullable = false)
+    @Column(name= "fechautc",nullable = false)
     private String fechaUTC = null;
     
     @Column(name= "latitud",nullable = false, unique = true)
-    private double latitud = 0.0;
+    private float latitud = 0;
     
     @Column(name= "longitud",nullable = false, unique = true)
-    private double longitud = 0.0;
+    private float longitud = 0;
     
     @Column(name= "profundidad",nullable = false, unique = true)
-    private double profundidad = 0;
+    private float profundidad = 0;
     
     @Column(name= "magnitud",nullable = false, unique = true)
     private String magnitud = null;
@@ -41,9 +44,26 @@ public class Sismo implements Serializable {
     @Column(name= "agencia",nullable = false, unique = true)
     private String agencia = null;
     
-    @Column(name= "refencia",nullable = false, unique = true)
+    @Column(name= "referencia",nullable = false, unique = true)
     private String referencia = null;
 
+    public Sismo() {
+        
+    
+    }
+    public Sismo(String fechalocal, String utc, float latitud, float longitud, float profundidad, String magnitud, String agencia, String referencia) {
+    
+        this.fechaLocal=fechalocal;
+        this.fechaUTC=utc;
+        this.latitud=latitud;
+        this.longitud=longitud;
+        this.profundidad=profundidad;
+        this.magnitud=magnitud;
+        this.agencia=agencia;
+        this.referencia=referencia;
+    }
+    
+    
     public static long getSeialVersionUID() {
         return seialVersionUID;
     }
@@ -72,27 +92,27 @@ public class Sismo implements Serializable {
         this.fechaUTC = fechaUTC;
     }
 
-    public double getLatitud() {
+    public float getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(double latitud) {
+    public void setLatitud(float latitud) {
         this.latitud = latitud;
     }
 
-    public double getLongitud() {
+    public float getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(double longitud) {
+    public void setLongitud(float longitud) {
         this.longitud = longitud;
     }
 
-    public double getProfundidad() {
+    public float getProfundidad() {
         return profundidad;
     }
 
-    public void setProfundidad(double profundidad) {
+    public void setProfundidad(float profundidad) {
         this.profundidad = profundidad;
     }
 
