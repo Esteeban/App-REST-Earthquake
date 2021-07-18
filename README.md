@@ -17,3 +17,17 @@ o errónea.
 ## Implementación
 
 Instalación nativa desde el repositorio en Ubuntu 20.04 LTS de 64 bits.
+Configurado en el puerto localhost:8080
+Base de datos con PostgreSQL
+
+## Ejecución
+
+Al clonar el repositorio ubicarse en la carpeta /App-REST-Earthquake/
+Posteriormente ingresar el siguiente comando para la ejecución del Servicio
+```sh
+mvn -f cpyd/ clean install && java -jar cpyd/target/cpyd.war
+```
+
+## Consumo
+Una vez levantado el servicio, para comprobar su funcionamiento y consumir la Api REST ingresamos a: 
+http://localhost:8080/cpyd/swagger-ui/

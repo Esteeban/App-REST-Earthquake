@@ -2,12 +2,16 @@ package cl.utem.project.cpyd.api.rest.v1;
 
 import cl.utem.project.cpyd.api.utils.IPUtils;
 import cl.utem.project.cpyd.api.utils.JwtUtils;
-import cl.utem.project.cpyd.api.vo.ErrorVo;
-import cl.utem.project.cpyd.api.vo.SismoVo;
-import cl.utem.project.cpyd.db.model.Sismo;
+import cl.utem.project.cpyd.api.rest.vo.ErrorVo;
+import cl.utem.project.cpyd.api.rest.vo.SismoVo;
+import cl.utem.project.cpyd.persistence.model.Sismo;
 import cl.utem.project.cpyd.exception.Exceptions;
+<<<<<<< HEAD
 import cl.utem.project.cpyd.manager.SismoManager;
 import cl.utem.project.cpyd.scraping.ScrapingWeb;
+=======
+import cl.utem.project.cpyd.persistence.manager.SismoManager;
+>>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -29,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/v1/sismos", consumes = {"application/json;charset=utf-8"}, produces = {"application/json;charset=utf-8"})
+@RequestMapping(value = "/v1/sismos")
 public class SismoRest implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,7 +51,7 @@ public class SismoRest implements Serializable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SismoRest.class);
 
-    @ApiOperation(value = "Permite obtener el listado de productos")
+    @ApiOperation(value = "Permite obtener el listado de sismos")
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Respuesta fue exitosa", response = SismoVo.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Acceso no autorizado", response = ErrorVo.class),
@@ -77,15 +81,28 @@ public class SismoRest implements Serializable {
             throw new Exceptions(401, "Credenciales inválidas");
         }
 
+<<<<<<< HEAD
         scrapingWeb.scraping();
+=======
+>>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f
         List<Sismo> sismos = sismoManager.getSismos();
         if (CollectionUtils.isEmpty(sismos)) {
-            LOGGER.error("Lista de productos vacía");
-            throw new Exceptions(404, "No se han encontrado productos");
+            LOGGER.error("Lista de sismos vacía");
+            throw new Exceptions(404, "No se han encontrado sismos");
         }
+<<<<<<< HEAD
        
         
         return ResponseEntity.ok(sismos);
+=======
+
+        List<SismoVo> resultList = new ArrayList<>();
+        sismos.forEach(sismo->{
+            resultList.add(new SismoVo(sismo));
+        });
+        sismos.clear();
+        return ResponseEntity.ok(resultList);
+>>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f
     }
 
 }
