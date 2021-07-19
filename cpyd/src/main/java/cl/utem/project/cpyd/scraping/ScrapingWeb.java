@@ -1,7 +1,7 @@
 package cl.utem.project.cpyd.scraping;
 
-import cl.utem.project.cpyd.db.model.Sismo;
-import cl.utem.project.cpyd.db.repository.SismoRepository;
+import cl.utem.project.cpyd.persistence.model.Sismo;
+import cl.utem.project.cpyd.persistence.repository.SismoRepository;
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,12 +16,6 @@ public class ScrapingWeb {
     @Autowired
     private transient SismoRepository sismoRepository;
 
-    /**
-     * Método que obtiene el codigo HTML de la página web
-     *
-     * @param url de la página
-     * @return codigo html
-     */
     ArrayList<Sismo> sismos = new ArrayList<>();
 
     /**
@@ -40,24 +34,6 @@ public class ScrapingWeb {
     }
 
     public void scraping() {
-        /*
-                Elements articulos = ScrapingWeb.getHTML("http://www.sismologia.cl/links/ultimos_sismos.html").select("a");
-		
-                for (Element sismo : articulos) {
-			try {
-				String urlSismo = sismo.select("a").attr("abs:href");
-				Document htmlSismo = ScrapingWeb.getHTML(urlSismo);
-				
-				String Hora = htmlSismo.select("tr").text();
-				System.out.println("Sismo:"+Hora);
-				System.out.println("-------------");
-			}catch(Exception e){
-				System.out.println("error");
-			}
-		}
-                /*
-            
-         */
         Document htmlSismo = ScrapingWeb.getHTML("http://www.sismologia.cl/links/ultimos_sismos.html");
 
         Element tabla = htmlSismo.select("table").get(0); //Obteniendo primera tabla que es la de sismos
@@ -77,16 +53,17 @@ public class ScrapingWeb {
                     columnas.get(6).text(),
                     columnas.get(7).text()
             );
-
             sismos.add(sm);
         }
 
-        //PRUEBA
         for (Sismo s : sismos) {
-            System.out.println(s.getFechaLocal() + ";" + s.getFechaUTC() + ";" + s.getLatitud() + ";" + s.getLongitud() + ";" + s.getProfundidad() + ";" + s.getMagnitud() + ";" + s.getAgencia() + ";" + s.getReferencia());
+            System.out.println(s.getFechaLocal() + ";" 
+                    + s.getFechaUTC() + ";" + s.getLatitud() + ";" 
+                    + s.getLongitud() + ";" + s.getProfundidad() + ";" 
+                    + s.getMagnitud() + ";" + s.getAgencia() + ";" 
+                    + s.getReferencia());
             sismoRepository.save(s);
         }
-
     }
 
     /**

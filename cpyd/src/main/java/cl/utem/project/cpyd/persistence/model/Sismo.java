@@ -7,16 +7,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="sismo")
 public class Sismo implements Serializable {
-    
-<<<<<<< HEAD:cpyd/src/main/java/cl/utem/project/cpyd/db/model/Sismo.java
-    
-    
-    
-    private static final long seialVersionUID=1L;
-=======
+       
     private static final long seialVersionUID = 1L;
->>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f:cpyd/src/main/java/cl/utem/project/cpyd/persistence/model/Sismo.java
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "pk",nullable = false)
@@ -46,9 +39,9 @@ public class Sismo implements Serializable {
     @Column(name= "referencia",nullable = false, unique = true)
     private String referencia = null;
 
+    //Constructores
     public Sismo() {
         
-    
     }
     public Sismo(String fechalocal, String utc, float latitud, float longitud, float profundidad, String magnitud, String agencia, String referencia) {
     
@@ -62,7 +55,7 @@ public class Sismo implements Serializable {
         this.referencia=referencia;
     }
     
-    
+    //Getters y Setters
     public static long getSeialVersionUID() {
         return seialVersionUID;
     }

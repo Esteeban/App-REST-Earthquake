@@ -18,7 +18,8 @@ public class SismoVo{
     private String magnitud;
     private String agencia;
     private String referencia;
-
+    
+    //Constructores
     public SismoVo() {
     }
 
@@ -43,10 +44,10 @@ public class SismoVo{
                 this.profundidad=profundidad;
                 this.magnitud=magnitud;
                 this.agencia=agencia;
-                this.referencia=referencia;
-           
+                this.referencia=referencia;          
     }
 
+    //Getters y Setters
     @ApiModelProperty(value = "id del sismo",
             required = true,
             example = "1")

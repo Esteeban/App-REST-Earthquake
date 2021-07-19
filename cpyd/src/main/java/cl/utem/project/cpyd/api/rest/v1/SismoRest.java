@@ -6,12 +6,8 @@ import cl.utem.project.cpyd.api.rest.vo.ErrorVo;
 import cl.utem.project.cpyd.api.rest.vo.SismoVo;
 import cl.utem.project.cpyd.persistence.model.Sismo;
 import cl.utem.project.cpyd.exception.Exceptions;
-<<<<<<< HEAD
-import cl.utem.project.cpyd.manager.SismoManager;
-import cl.utem.project.cpyd.scraping.ScrapingWeb;
-=======
 import cl.utem.project.cpyd.persistence.manager.SismoManager;
->>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f
+import cl.utem.project.cpyd.scraping.ScrapingWeb;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -40,8 +36,6 @@ public class SismoRest implements Serializable {
     
     @Autowired
     private transient ScrapingWeb scrapingWeb;
-    
-    
 
     @Autowired
     private transient SismoManager sismoManager;
@@ -81,28 +75,20 @@ public class SismoRest implements Serializable {
             throw new Exceptions(401, "Credenciales inválidas");
         }
 
-<<<<<<< HEAD
         scrapingWeb.scraping();
-=======
->>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f
+        
         List<Sismo> sismos = sismoManager.getSismos();
         if (CollectionUtils.isEmpty(sismos)) {
             LOGGER.error("Lista de sismos vacía");
             throw new Exceptions(404, "No se han encontrado sismos");
         }
-<<<<<<< HEAD
-       
         
-        return ResponseEntity.ok(sismos);
-=======
-
         List<SismoVo> resultList = new ArrayList<>();
         sismos.forEach(sismo->{
             resultList.add(new SismoVo(sismo));
         });
         sismos.clear();
         return ResponseEntity.ok(resultList);
->>>>>>> 9fb6883ec4a9ea38d454ced9aba3369fcddb1e6f
     }
 
 }
