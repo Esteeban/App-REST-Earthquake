@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/v1/sismos")
+@RequestMapping(value = "/sismos")
 public class SismoRest implements Serializable {
 
     private static final long serialVersionUID = 1L;

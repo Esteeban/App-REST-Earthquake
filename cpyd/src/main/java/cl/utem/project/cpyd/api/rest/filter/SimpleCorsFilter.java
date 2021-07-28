@@ -32,7 +32,7 @@ public class SimpleCorsFilter implements Filter{
             return;
         } else {
             final String origin = StringUtils.trimToEmpty(request.getHeader("Origin"));
-            if (StringUtils.isBlank(origin) || StringUtils.equalsAnyIgnoreCase(origin, "localhost", "localhost.localdomain", "127.0.0.1", "::1", "null")) {
+            if (StringUtils.isBlank(origin) || StringUtils.equalsAnyIgnoreCase(origin, "localhost","api.jkd.cl" ,"localhost.localdomain", "127.0.0.1", "::1", "null")) {
                 response.addHeader("Access-Control-Allow-Origin", "*");
             } else {
                 response.addHeader("Access-Control-Allow-Origin", origin);
